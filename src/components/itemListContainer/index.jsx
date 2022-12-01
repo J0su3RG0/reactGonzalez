@@ -1,8 +1,10 @@
 import React from "react";
-import Title from '../Title';
+import Title from '../Title/index';
 
-export const ItemListContainer = () => {
+export const ItemListContainer = (props) => {
     return (
-        <Title />
+        <Title greeting={props.numeroItem} />
     )
 }
+
+export default ItemListContainer;
