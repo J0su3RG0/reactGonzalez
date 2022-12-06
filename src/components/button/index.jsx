@@ -1,3 +1,4 @@
+//Componente de botton
 import React from "react";
 import './style.css';
 
@@ -9,6 +10,10 @@ const Button = ({text, onHandlerClick}) => {
 }
 
 export default Button;
+
+//Function based componenents
+//Se reciben como parametro de la funcion ({name}) => <p>{name}</p>
+
 
 // Boton como clase
 
