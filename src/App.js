@@ -27,20 +27,25 @@ import Sidebar from './components/sidebar';
 // Import de lista de productos Clase 5
 import { PRODUCTS } from './constants/data/products';
 import Card from './components/card';
+import { useFetch } from './constants/hooks/useFetch';
+import { URL_BASE, URL_ENDPOINTS } from './constants/services';
 
 
 function App() {
   const [isOpen, setOpen] = useState(false); // Estado del sidebar, seteado a esconderse
   const [showProducts, setShowProducts] = useState(false); // Estado de productos, seteado a esconderse
 
+  // Se realiza la consulta a la Api generada por mockapi, al momento de montar la pagina
+  const { data: user, error, loading } = useFetch(`${URL_BASE}${URL_ENDPOINTS.USERS}`);
+  
   const onHandlerCart = () => {
     setOpen(!isOpen);
   }
-
+  
   return (
     <div className="container">
       <Sidebar onClose={onHandlerCart} isOpen={isOpen} />
-      <Header numbersOfItems={0} onHandlerCart={onHandlerCart} />
+      <Header numbersOfItems={0} onHandlerCart={onHandlerCart} user={user[0]} />
       <BrowserRouter>
         <Routes>
           <Route path='/' element={ <BarraNavegador /> }>
